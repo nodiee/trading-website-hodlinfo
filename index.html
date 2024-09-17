@@ -1,0 +1,406 @@
+<html></html>
+ <head>
+  <title>
+   HodlInfo
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .header h1 {
+            font-size: 2em;
+            color: #00d4ff;
+        }
+        .header .buttons {
+            display: flex;
+            gap: 10px;
+            position: relative;
+        }
+        .header .buttons button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .header .buttons button:hover {
+            background-color: #555;
+        }
+        .header .buttons .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .header .buttons .dropdown button {
+            padding: 10px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            width: 100%;
+        }
+        .header .buttons .dropdown button:hover {
+            background-color: #555;
+        }
+        .header .buttons .dropdown.active {
+            display: flex;
+        }
+        .header .connect {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header .connect button {
+            background-color: #00d4ff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .header .connect button:hover {
+            background-color: #00a3cc;
+        }
+        .header .connect .toggle {
+            background-color: #333;
+            width: 40px;
+            height: 20px;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+        .header .connect .toggle::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: #00d4ff;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .header .connect .toggle.active::before {
+            left: 22px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+        }
+        .stats div {
+            text-align: center;
+        }
+        .stats div p {
+            margin: 5px 0;
+        }
+        .stats div p:first-child {
+            font-size: 1.5em;
+            color: #00d4ff;
+        }
+        .price {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+        .price p {
+            font-size: 0.8em;
+            color: #888;
+        }
+        .table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #333;
+        }
+        .table th {
+            background-color: #333;
+        }
+        .table td {
+            background-color: #222;
+        }
+        .table .platform {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .table .platform img {
+            width: 20px;
+            height: 20px;
+        }
+        .table .difference.negative {
+            color: #ff4d4d;
+        }
+        .table .difference.positive {
+            color: #4dff4d;
+        }
+        .table .savings {
+            color: #ff4d4d;
+        }
+        .add-to-home {
+            background-color: #00d4ff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .add-to-home:hover {
+            background-color: #00a3cc;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="header">
+    <h1>
+     HODLINFO
+    </h1>
+    <div class="buttons">
+     <button>
+      INR
+     </button>
+     <div class="dropdown-container">
+      <button onclick="toggleDropdown()">
+       BTC
+      </button>
+      <div class="dropdown" id="currencyDropdown">
+       <button>
+        BTC
+       </button>
+       <button>
+        ETH
+       </button>
+       <button>
+        XRP
+       </button>
+       <button>
+        LTC
+       </button>
+       <button>
+        BCH
+       </button>
+       <button>
+        EOS
+       </button>
+       <button>
+        BNB
+       </button>
+       <button>
+        USDT
+       </button>
+      </div>
+     </div>
+     <button>
+      BUY BTC
+     </button>
+    </div>
+    <div class="connect">
+     <button>
+      Connect Telegram
+     </button>
+     <div class="toggle">
+     </div>
+    </div>
+   </div>
+   <div class="stats">
+    <div>
+     <p>
+      0.1 %
+     </p>
+     <p>
+      5 Mins
+     </p>
+    </div>
+    <div>
+     <p>
+      0.96 %
+     </p>
+     <p>
+      1 Hour
+     </p>
+    </div>
+    <div>
+     <p>
+      2.73 %
+     </p>
+     <p>
+      1 Day
+     </p>
+    </div>
+    <div>
+     <p>
+      7.51 %
+     </p>
+     <p>
+      7 Days
+     </p>
+    </div>
+   </div>
+   <div class="price">
+    ₹ 26,56,110
+    <p>
+     Average BTC/INR net price including commission
+    </p>
+   </div>
+   <table class="table">
+    <thead>
+     <tr>
+      <th>
+       #
+      </th>
+      <th>
+       Platform
+      </th>
+      <th>
+       Last Traded Price
+      </th>
+      <th>
+       Buy / Sell Price
+      </th>
+      <th>
+       Difference
+      </th>
+      <th>
+       Savings
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       1
+      </td>
+      <td class="platform">
+       <img alt="WazirX logo" height="20" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-Q7Oru309Vr6bVlZ3wliltglP.png?st=2024-09-16T15%3A55%3A55Z&amp;se=2024-09-16T17%3A55%3A55Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-15T23%3A29%3A54Z&amp;ske=2024-09-16T23%3A29%3A54Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=jbJPWv845gtHR6NtfEFE0X2dvsAtvlpY/j2Zt8ZdCmc%3D" width="20"/>
+       WazirX
+      </td>
+      <td>
+       ₹ 25,72,612
+      </td>
+      <td>
+       ₹ 25,72,610 / ₹ 25,72,612
+      </td>
+      <td class="difference negative">
+       -3.14 %
+      </td>
+      <td class="savings">
+       ₹ 83,498
+      </td>
+     </tr>
+     <tr>
+      <td>
+       2
+      </td>
+      <td class="platform">
+       <img alt="Bitbns logo" height="20" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-5LREQtKQEImjHGZLJ81IsAKv.png?st=2024-09-16T15%3A55%3A55Z&amp;se=2024-09-16T17%3A55%3A55Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-15T23%3A28%3A49Z&amp;ske=2024-09-16T23%3A28%3A49Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=no0/0n8UpxGhlp4Y7gdaevZpCufoRcjnEc/bpTVRcmA%3D" width="20"/>
+       Bitbns
+      </td>
+      <td>
+       ₹ 28,83,906
+      </td>
+      <td>
+       ₹ 28,55,164 / ₹ 28,82,157
+      </td>
+      <td class="difference positive">
+       8.58 %
+      </td>
+      <td class="savings">
+       ₹ 2,27,796
+      </td>
+     </tr>
+     <tr>
+      <td>
+       3
+      </td>
+      <td class="platform">
+       <img alt="Colodax logo" height="20" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-dEwjQMAMtBSYEaTYCjroqS6E.png?st=2024-09-16T15%3A56%3A02Z&amp;se=2024-09-16T17%3A56%3A02Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-16T00%3A26%3A06Z&amp;ske=2024-09-17T00%3A26%3A06Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=79VMNVP4bVQDRu8vCkNUn1smZrhHnuB1Png3XwyVxA4%3D" width="20"/>
+       Colodax
+      </td>
+      <td>
+       ₹ 25,46,035
+      </td>
+      <td>
+       ₹ 25,33,304 / ₹ 28,51,559
+      </td>
+      <td class="difference negative">
+       -4.14 %
+      </td>
+      <td class="savings">
+       ₹ 1,10,074
+      </td>
+     </tr>
+     <tr>
+      <td>
+       4
+      </td>
+      <td class="platform">
+       <img alt="Zebpay logo" height="20" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-qSIm30DRhKNGVrtPYaZhJ81d.png?st=2024-09-16T16%3A00%3A40Z&amp;se=2024-09-16T18%3A00%3A40Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-15T23%3A42%3A43Z&amp;ske=2024-09-16T23%3A42%3A43Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=%2B4JmXG4f5zVie/a9h9jk99wFyEm9/Lsa7ygwIotiCHg%3D" width="20"/>
+       Zebpay
+      </td>
+      <td>
+       ₹ 26,50,000
+      </td>
+      <td>
+       ₹ 26,49,999 / ₹ 26,21,000
+      </td>
+      <td class="difference negative">
+       -0.23 %
+      </td>
+      <td class="savings">
+       ₹ 6,110
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <button class="add-to-home">
+    Add hodlinfo to home screen
+   </button>
+  </div>
+  <script>
+   function toggleDropdown() {
+            var dropdown = document.getElementById('currencyDropdown');
+            dropdown.classList.toggle('active');
+        }
+  </script>
+   <script>
+    fetch('/cryptos')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('crypto-list');
+        data.forEach(crypto => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${crypto.name} - Last: ₹${crypto.last}`;
+          list.appendChild(listItem);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+ </body>
+</html>
